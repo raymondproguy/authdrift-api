@@ -1,4 +1,10 @@
+# Node.js
+node_modules/
+dist/
+npm-debug.log*
+
+# Environment variables
 .env
-__pycache__/
-*.pyc
-venv/
+
+# Keep ignoring OS files
+.DS_Store
