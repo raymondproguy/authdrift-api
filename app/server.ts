@@ -6,7 +6,7 @@
  * Just plug and use no need for extra setup
  */
 import express from 'express';
-import connectDB from './config/database.ts';
+//import connectDB from './config/database.ts';
 import dotenv from 'dotenv';
 //import path from 'path';
 import helmet from "helmet";
@@ -36,10 +36,10 @@ app.get('/health', (_req, res) => {
   res.status(200).json({ status: 'OK' });
 });
 
-connectDB().then(() =>{
+//connectDB().then(() =>{
 const PORT = process.env.PORT || 5000;
 const host = "0.0.0.0";
  app.listen(Number(PORT), host, () => {
  console.log(`Server runnig on http://${host}:${PORT}`)
  });
-});
+//});

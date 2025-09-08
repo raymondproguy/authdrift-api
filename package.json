@@ -1,11 +1,11 @@
 {
-  "name": "authify-api",
-  "version": "1.0.0",
+  "name": "authifyng-api",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --exec ts-node-esm src/app.ts",
+    "dev": "nodemon --exec ts-node-esm app/server.ts",
     "build": "tsc --noEmit",
-    "start": "tsx src/app.ts --host 0.0.0.0 --port ${PORT}",
+    "start": "tsx app/server.ts --host 0.0.0.0 --port ${PORT}",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write ."
   },
