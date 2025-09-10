@@ -10,7 +10,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 //import path from 'path';
 import helmet from "helmet";
-//import authRoutes from "./routes/auth.route.ts";
+import router from "./routers/project.route.ts";
 //import dashboardRoute from "./routes/dashboard.route.ts";
 //import { setupSwaggerDocs } from "./config/swagger.ts";
 
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //app.use(express.static(path.join(process.cwd(), 'public')));
 
-//app.use("/api/v2/auth", authRoutes);
+app.use("/api/v2/", router);
 //app.use("/api", dashboardRoute);
 
 //setupSwaggerDocs(app);
