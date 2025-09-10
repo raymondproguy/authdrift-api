@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //app.use(express.static(path.join(process.cwd(), 'public')));
 
-app.use("/api/v2/", router);
+app.use("/api/v2/project", router);
 //app.use("/api", dashboardRoute);
 
 //setupSwaggerDocs(app);
