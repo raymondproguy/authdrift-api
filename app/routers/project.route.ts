@@ -1,24 +1,17 @@
 import express from "express";
+import { getProject, postProject, getProjects, updateProject, deleteProject } from 
+"../controllers/project.controller.ts";
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.status(200).json({ message: "Get projects."})
-});
+router.get("/", getProject);
 
-router.post("/",(req, res) => {
-  res.status(201).json({ message: "Create project."})
-});
+router.post("/", postProject);
 
-router.get("/", (req, res) => {
-  res.status(200).json({ message: "Get a single project by _id."})
-});
+router.get("/", getProjects);
 
-router.put("/:id", (req, res) => {
-  res.status(200).json({ message: "Upadate project."})
-});
+router.put("/:id", updateProject);
 
-router.delete("/:id", (req, res) => {
-  res.status(200).json({ message: "Delete project."})
-});
+router.delete("/:id", deleteProject);
 
 export default router;
