@@ -13,11 +13,11 @@ const projectShema = new mongoose.Schema({
     trim: true,
     maxlength: [500, "Project name cannot exceed 500 characters."],
   },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
+ // createdBy: {
+   // type: mongoose.Schema.Types.ObjectId,
     //ref: User,
-    required: true,
-  },
+   // required: true,
+ // },
   isActive: {
     type: Boolean,
     defaul: true,
