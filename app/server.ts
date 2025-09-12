@@ -10,7 +10,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 //import path from 'path';
 import helmet from "helmet";
-import router from "./routers/project.route.ts";
+import projectRoutes from "./routers/project.route";
 //import dashboardRoute from "./routes/dashboard.route.ts";
 //import { setupSwaggerDocs } from "./config/swagger.ts";
 
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //app.use(express.static(path.join(process.cwd(), 'public')));
 
-app.use("/api/v2/project", router);
+app.use("/api/v2/project", projectRoutes);
 //app.use("/api", dashboardRoute);
 
 //setupSwaggerDocs(app);
@@ -40,6 +40,6 @@ app.get('/health', (_req, res) => {
 const PORT = process.env.PORT || 5000;
 const host = "0.0.0.0";
  app.listen(Number(PORT), host, () => {
- console.log(`Server runnig on http://${host}:${PORT}`)
+ console.log(`Server running on http://${host}:${PORT}`)
  });
 //});

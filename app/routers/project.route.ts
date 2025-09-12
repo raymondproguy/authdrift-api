@@ -17,7 +17,7 @@ router.route("/")
 router.route("/:id")
   .get(handleGetProjectById)
   .delete(handleDeleteProject)
-  .get(handleUpdateProject)
+  .put(handleUpdateProject)
 
 
 export default router;
