@@ -11,7 +11,7 @@ import {
 // @desc Get projects 
 // @route GET /api/v2/project
 // @access private
-export const handleCreateProjectProject = async (_req, res) => {
+export const handleCreateProject = async (_req, res) => {
    try {
     const project = await createProject({_req.body, createdBy: req.user.id});
     res.status(201).json(project);
