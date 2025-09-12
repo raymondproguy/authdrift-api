@@ -7,7 +7,7 @@ export const createProject = async (data) => {
   return await project.save();
 };
 
- export const getAllProject = async () =>{
+ export const getAllProjects = async () =>{
   return await Project.find();
 };
 
