@@ -5,20 +5,22 @@ import { Request, Response } from "express";
 import { 
   createProject,
   getAllProjects,
-  getAllProjectById, 
+  getProjectById, 
   updateProject,
   deleteProject
 } from "../services/project.service";
+import { logger } from "../utils/logger";
 
 // @desc Get projects 
 // @route GET /api/v2/project
 // @access private
 export const handleCreateProject = async (req: Request, res:Response) => {
-   try {
+   try{
     const project = await createProject(req.body);
           //createdBy: req.user.id
    // });
     res.status(201).json(project);
+    logger.success(`Project created ${project.name}`)
    } catch (error: any) {
     res.status(500);
     res.json({ message: error.message });
@@ -30,7 +32,8 @@ export const handleCreateProject = async (req: Request, res:Response) => {
 // @access private
 export const handleGetAllProjects = async (req:Request, res: Response) => {
   try {
-     const projects = await getAllProjects();
+     const projects = await getAllProjects(req.body);
+     logger.info(`Fetched ${projects} from DB`)
      res.status(200).json(projects)
    } catch (error: any) {
     res.status(500);
@@ -43,9 +46,10 @@ export const handleGetAllProjects = async (req:Request, res: Response) => {
 // @access private
 export const handleGetProjectById = async (req:Request, res:Response) => {
   try {
-    const project = await getAllProjectById(req.params.id);
+    const project = await getProjectById(req.params.id);
     if (!project)
       return res.status(404).json({ message: "Oops Project not found." });
+    logger.info(`Fetched ${project.name} from DB`)
     res.json(project);
    } catch (error: any) {
     res.status(500);
@@ -62,6 +66,7 @@ export const handleUpdateProject = async (req:Request, res:Response) => {
     if(!project)
       return res.status(404).json({ message: "Opps Project not found."})
     res.json(project);
+    logger.info(`Project upadated: ${project.name}`)
    } catch (error: any) {
     res.status(500);
     res.json({ message: error.message });
@@ -77,6 +82,7 @@ export const handleDeleteProject = async (req:Request, res:Response) => {
     if (!project)
       return res.status(404).json({ message: "Opps not found."});
     res.json({ message: "Project deleted. "});
+    logger.info(`Project deleted from DB`)
    } catch (error: any) {
     res.status(500);
     res.json({ message: error.message });

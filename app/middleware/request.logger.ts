@@ -2,7 +2,6 @@
 
 import { Request, Response, NextFunction } from "express";
 import { logger } from "../utils/logger";
-import { date } from "joi";
 
 export const requestLogger = (req:Request, res:Response, next:NextFunction) =>{
   const start = Date.now();
@@ -12,7 +11,7 @@ export const requestLogger = (req:Request, res:Response, next:NextFunction) =>{
       res.statusCode >= 300 ? "yellow" : "green";
     res.statusText = res.statusCode.toString()
     [statusColor];
-    console.log(${req.method} ${req.originalUrl} ${statusText} ${duration}ms .gray);
+    logger.info(`${req.method} ${req.originalUrl} ${statusText} ${duration}ms` .gray);
   });
   next()
 };
