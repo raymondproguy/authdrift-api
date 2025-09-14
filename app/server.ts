@@ -11,19 +11,26 @@ import connectDB from './config/database';
 import dotenv from 'dotenv';
 //import path from 'path';
 import helmet from "helmet";
+import rateLimit from 'express-rate-limit';
 import { logger } from './utils/logger';
 import projectRoutes from "./routers/project.route";
+import { requestLogger } from './middleware/request.logger';
 //import dashboardRoute from "./routes/dashboard.route.ts";
 //import { setupSwaggerDocs } from "./config/swagger.ts";
 
 dotenv.config();
 
 const app = express();
+
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(rateLimit({
+  windowMs: 15 * 60 * 1000, 
+  max: 100
+}));
 
-//app.use()
+app.use(requestLogger);
 //app.use()
 
 //app.use(express.static(path.join(process.cwd(), 'public')));

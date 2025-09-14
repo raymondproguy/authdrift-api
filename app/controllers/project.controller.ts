@@ -11,8 +11,8 @@ import {
 } from "../services/project.service";
 import { logger } from "../utils/logger";
 
-// @desc Get projects 
-// @route GET /api/v2/project
+// @desc Post projects 
+// @route POST /api/v2/project
 // @access private
 export const handleCreateProject = async (req: Request, res:Response) => {
    try{
@@ -27,8 +27,8 @@ export const handleCreateProject = async (req: Request, res:Response) => {
    }
 };
 
-// @desc Post project
-// @route POST /api/v2/project
+// @desc Get project
+// @route GET /api/v2/project
 // @access private
 export const handleGetAllProjects = async (req:Request, res: Response) => {
   try {
