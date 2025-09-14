@@ -17,7 +17,7 @@ import { logger } from "../utils/logger";
 export const handleCreateProject = async (req: Request, res:Response) => {
    try{
     const project = await createProject(req.body);
-          //createdBy: req.user.id
+    //createdBy: req.user.id
    // });
     res.status(201).json(project);
     logger.success(`Project created ${project.name}`)
