@@ -9,7 +9,6 @@ import express from 'express';
 import { Request, Response } from "express";
 import connectDB from './config/database';
 import dotenv from 'dotenv';
-//import path from 'path';
 import helmet from "helmet";
 import rateLimit from 'express-rate-limit';
 import { logger } from './utils/logger';
@@ -32,9 +31,6 @@ app.use(rateLimit({
 }));
 
 app.use(requestLogger);
-//app.use()
-
-//app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use("/api/v2/project", projectRoutes);
 app.use("/api/v2/dev", devRoutes);
