@@ -3,6 +3,12 @@ import bcrypt from 'bcryptjs';
 import { logger } from '../utils/logger';
 
 const devSchema = new mongoose.Schema({
+  devname: {
+    type: String,
+    required: true,
+    trim: true,
+    maxlength:[20, "Name must not excced 20 characters"]
+  },
   email: {
     type: String,
     required: [true, "Email is required"],
@@ -39,7 +45,7 @@ devSchema.pre('save', async function(next) {
   try {
     const salt = await bcrypt.genSalt(12);
     this.password = await bcrypt.hash(this.password, salt);
-    logger.debug(`Password hashed for dev: ${this.email}`);
+    logger.debug(`Password hashed for dev: ${this.devname}`);
     next();
   } catch (error: any) {
     logger.error(`Password hashing error: ${error.message}`);
@@ -49,7 +55,7 @@ devSchema.pre('save', async function(next) {
 
 // Logging middleware
 devSchema.post('save', function(doc) {
-  logger.debug(`Dev user saved: ${doc.email}`);
+  logger.debug(`Dev user saved: ${doc.devname}`);
 });
 
 const Dev = mongoose.model('Dev', devSchema);
