@@ -28,10 +28,6 @@ const devSchema = new mongoose.Schema({
     trim: true,
     maxlength: [100, "Company name cannot exceed 100 characters"]
   },
-  apiKey: {
-    type: String,
-    unique: true
-  },
   isActive: {
     type: Boolean,
     default: true
