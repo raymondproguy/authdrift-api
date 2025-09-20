@@ -37,7 +37,7 @@ app.use(requestLogger);
 //app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use("/api/v2/project", projectRoutes);
-app.use("/api/v2/auth", devRoutes);
+app.use("/api/v2/dev", devRoutes);
 
 //setupSwaggerDocs(app);
 
