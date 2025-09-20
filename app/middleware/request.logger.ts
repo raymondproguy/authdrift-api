@@ -20,7 +20,7 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction) =
       coloredStatusCode = statusCode.toString().green;
     }
     
-    console.log(`${req.method} ${req.originalUrl} ${coloredStatusCode} ${duration}ms`.gray);
+    logger.info(`${req.method} ${req.originalUrl} ${coloredStatusCode} ${duration}ms`.gray);
   });
   
   next();
