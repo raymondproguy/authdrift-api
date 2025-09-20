@@ -1,5 +1,5 @@
 /**
- * Authify API - Auth-as-a-Service
+ * AuthDrift API - Auth-as-a-Service
  * I'm building from scracth
  * Raymond Nicholas ProGuy
  * Free, Open Source, Secure Authentication API
@@ -42,7 +42,7 @@ app.use("/api/v2/project", projectRoutes);
 
 app.get('/', (req:Request, res:Response) => {
   logger.info("Root endpoint accessed")
-  res.json({ message: 'Welcome to AuthifyNG API V2, Secure your fueture with AuthifyNG. Simple, modern, secure Authentication system for your app/startup '});
+  res.json({ message: 'Welcome to AuthDrift API V2, Secure your fueture with AuthifyNG. Simple, modern, secure Authentication system for your app/startup '});
 });
 
 app.get('/health', (req:Request, res:Response) => {
