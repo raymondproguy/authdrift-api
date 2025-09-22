@@ -1,5 +1,6 @@
 // ./app/model/project.model.ts
 import mongoose from "mongoose";
+import Dev from "./dev.model";
 import { logger } from "../utils/logger";
 
 const projectShema = new mongoose.Schema({
@@ -14,11 +15,11 @@ const projectShema = new mongoose.Schema({
     trim: true,
     maxlength: [500, "Project name cannot exceed 500 characters."],
   },
- // createdBy: {
-   // type: mongoose.Schema.Types.ObjectId,
-    //ref: User,
-   // required: true,
- // },
+ createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Dev,
+    required: true,
+ },
   isActive: {
     type: Boolean,
     defaul: true,
