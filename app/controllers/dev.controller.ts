@@ -64,7 +64,7 @@ export const handleLogin = async (req:Request, res:Response) =>{
   }
 };
 
-export const handleLoginGetProfile = async (req:Request, res:Response) =>{
+export const handleGetProfile = async (req:Request, res:Response) =>{
   try {
     const dev = await getDevByName((req as any).dev.devname);
     if(!dev) {
