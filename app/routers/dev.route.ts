@@ -6,20 +6,27 @@ import {
   handleGetDevByName,
   handleUpdateDev,
   handleDeleteDev,
+  handleRegister,
+  handleLogin,
+  handleGetProfile
 } from "../controllers/dev.controller";
 import ApiKeyRoutes from "../routers/apiKey.route";
+import { authenticateToken } from "../middleware/auth.dev";
 //import { validateDev } from "../middleware/validation";
 
 const router = express.Router();
 
+router.post("/signup", handleRegister)
+router.post("/signin", handleLogin)
+
 router.route("/")
- // .get(handleGetAllDevs)
-  .post(handleCreateDev); // will add validation later
+  .post(authenticateToken, handleCreateDev); // will add validation later
 
 router.route("/:id")
-  .get(handleGetDevByName)
-  .put(handleUpdateDev)
-  .delete(handleDeleteDev);
+  .get(authenticateToken, handleGetProfile)
+  .get(authenticateToken, handleGetDevByName)
+  .put(authenticateToken, handleUpdateDev)
+  .delete(authenticateToken, handleDeleteDev);
 
 router.use("/:devID/api-keys", ApiKeyRoutes)
 export default router;
