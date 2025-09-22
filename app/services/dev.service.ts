@@ -64,7 +64,7 @@ export const registerDev = async (data:any) =>{
   return {dev: savedDev, token}
 };
 
-const loginDev = async (email:string, password:string) =>{
+export const loginDev = async (email:string, password:string) =>{
   const dev = await Dev.findOne({email}).select("+password")
   if (!dev){
     throw new Error ("Invalid credentials");
