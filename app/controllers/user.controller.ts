@@ -12,7 +12,7 @@ import {
 } from "../services/user.service";
 import { logger } from "../utils/logger";
 
-export const handleRegister = async(req:Request, res:Response) =>{
+export const handleRegisterUser = async(req:Request, res:Response) =>{
   try {
     const {user, token} = await registerUser(req.body);
     logger.success(`User registered: ${user.email}`);
@@ -37,7 +37,7 @@ export const handleRegister = async(req:Request, res:Response) =>{
   }
 };
 
-export const handleLogin = async (req:Request, res:Response) =>{
+export const handleLoginUser = async (req:Request, res:Response) =>{
   try {
     const {email,password} = req.body;
      const {user, token} = await loginUser(email,password);
@@ -63,7 +63,7 @@ export const handleLogin = async (req:Request, res:Response) =>{
   }
 };
 
-export const handleGetProfile = async (req:Request, res:Response) =>{
+export const handleGetUserProfile = async (req:Request, res:Response) =>{
   try {
     const user = await getUserByName((req as any).user.username);
     if(!user) {
@@ -122,7 +122,7 @@ export const handleGetAllUser = async (req: Request, res: Response) => {
 };
 
 
-export const handleGetDevByName = async (req: Request, res: Response) => {
+export const handleGetUserByName = async (req: Request, res: Response) => {
   try {
     const user = await getUserByName(req.body);
     if (!user) {
@@ -145,7 +145,7 @@ export const handleGetDevByName = async (req: Request, res: Response) => {
   }
 };
 
-export const handleUpdateDev = async (req: Request, res: Response) => {
+export const handleUpdateUser = async (req: Request, res: Response) => {
   try {
     const user = await updateUser(req.params.id, req.body);
     if (!user) {
