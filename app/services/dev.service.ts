@@ -59,7 +59,7 @@ export const registerDev = async (data:any) =>{
   logger.debug(`Dev registerd ${savedDev.email}`)
 
   //Generate JWT token 
-  const token = generateJWT(savedDev._id);
+  const token = generateJWT(savedDev.email);
 
   return {dev: savedDev, token}
 };
@@ -76,7 +76,7 @@ export const loginDev = async (email:string, password:string) =>{
   }
   logger.debug(`Logged in dev ${dev.email}`);
 
-  const token = generateJWT(dev._id);
+  const token = generateJWT(dev.email);
 
   return {dev, token};
 };
@@ -85,7 +85,7 @@ export const generateJWT = (devId:string) =>{
   return jwt.sign(
     {id: devId},
     process.env.JWT_SECRET || "fallback-secret",
-    {expiresin: "7d"}
+    {expiresIn: "1d"}
   );
 };
 
