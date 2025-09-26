@@ -13,7 +13,8 @@ import helmet from "helmet";
 import rateLimit from 'express-rate-limit';
 import { logger } from './utils/logger';
 import projectRoutes from "./routers/project.route";
-import devRoutes from "./routers/dev.route"
+import devRoutes from "./routers/dev.route";
+import userRoutes from "../app/routers/user.route";
 import { requestLogger } from './middleware/request.logger';
 //import dashboardRoute from "./routes/dashboard.route.ts";
 //import { setupSwaggerDocs } from "./config/swagger.ts";
@@ -34,6 +35,7 @@ app.use(requestLogger);
 
 app.use("/api/v2/project", projectRoutes);
 app.use("/api/v2/dev", devRoutes);
+app.use("/api/v2/user", userRoutes);
 
 //setupSwaggerDocs(app);
 
