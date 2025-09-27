@@ -50,3 +50,39 @@ export const findOrCreateDevFromGoogle = async(profile:any) =>{
  }
  return dev;
 };
+
+export const findOrCreateDevFromGitHub = async(profile:any)=>{
+ const email = profile.emails?[0]?.value || `${profile.devname}@github.com`;
+ let dev = await Dev.findOne({ "socialAuth.github.id": profile.id });
+ if(!dev){
+   dev = await Dev.findOne({ email });
+
+   if(!dev){
+     dev = new Dev({
+       email: email,
+       socialAuth:{
+         github:{
+           id: profile.id,
+           devname: profile.devname,
+           email: email,
+         }
+       },
+       emailVerified: !!profile.emails?[0]?.value
+     });
+     await dev.save();
+     logger.success(`New dev created via GitHub: ${dev.email}`);
+   } else {
+     dev.socialAuth.github = {
+       id: profile.id,
+       devname: profile.devname,
+       email: profile.email
+     };
+     if(profile.emails?[0]?.value) 
+       dev.emailVerified = true,
+       await dev.save();
+     logger.info(`GitHub account linked to: ${dev.email}`);
+   }
+ }
+
+ return dev;
+};
