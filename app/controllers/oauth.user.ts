@@ -1,5 +1,5 @@
 import {Request, Response } from "express";
-import { generateJWT } from "../services/dev.service";
+import { generateJWT } from "../services/oauth.user";
 import { logger } from "../utils/logger";
 
 export const handleAuthSuccess = (req: Request, res: Response) => {
