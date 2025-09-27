@@ -11,7 +11,7 @@ const router = express.Router();
 // Google OAuth
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 router.get("/google/callback", passport.authenticate("google", { 
-  failureRedirect: "/api/v2/auth/failure" 
+  failureRedirect: "/api/v2/dev-auth/failure" 
 }), handleAuthSuccess);
 
 // GitHub OAuth  
