@@ -28,6 +28,23 @@ const userSchema = new mongoose.Schema({
   isActive: {
     type: Boolean,
     default: true
+  },
+  socialAuth: {
+    google: {
+      id: String,
+      username: String,
+      email: String,
+      picture: String
+    },
+    github: {
+      id: String,
+      email: String,
+      username: String
+    }
+  },
+  emailVerified: {
+    type: Boolean,
+    default: false
   }
 }, { timestamps: true });
 

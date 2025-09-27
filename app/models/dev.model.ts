@@ -44,8 +44,7 @@ const devSchema = new mongoose.Schema({
     github: {
       id: String,
       devname: String,
-      email: String,
-      username: String
+      email: String
     }
   },
   emailVerified: {
