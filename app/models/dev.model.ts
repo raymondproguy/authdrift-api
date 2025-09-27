@@ -37,11 +37,13 @@ const devSchema = new mongoose.Schema({
   socialAuth: {
     google: {
       id: String,
+      devname: String,
       email: String,
       picture: String
     },
     github: {
       id: String,
+      devname: String,
       email: String,
       username: String
     }
