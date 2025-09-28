@@ -1,3 +1,4 @@
+/*
 import {Request, Response } from "express";
 import { generateJWT } from "../services/oauth.user";
 import { logger } from "../utils/logger";
@@ -23,3 +24,4 @@ export const handleLogout = (req: Request, res: Response) => {
     res.json({ success: true, message: 'Logged out successfully' });
   });
 };
+*/
