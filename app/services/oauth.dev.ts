@@ -1,5 +1,5 @@
 // ./app/services/oauth.dev.ts
-
+/*
 import jwt from "jsonwebtoken";
 import Dev from "../models/dev.model";
 import { logger } from "../utils/logger";
@@ -86,3 +86,4 @@ export const findOrCreateDevFromGitHub = async(profile:any)=>{
 
  return dev;
 };
+*/
