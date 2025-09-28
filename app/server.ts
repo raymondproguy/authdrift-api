@@ -11,14 +11,14 @@ import connectDB from './config/database';
 import dotenv from "dotenv";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
-import passport from "passport";
-import session  from "express-session";
+//import passport from "passport";
+//import session  from "express-session";
 import { logger } from "./utils/logger";
 import projectRoutes from "./routers/project.route";
 import devRoutes from "./routers/dev.route";
 import userRoutes from "../app/routers/user.route";
-import devOathRoute from "./routers/oauth.dev";
-import userOauthRoute from "./routers/oauth.user"
+//import devOathRoute from "./routers/oauth.dev";
+//import userOauthRoute from "./routers/oauth.user"
 import { requestLogger } from './middleware/request.logger';
 //import dashboardRoute from "./routes/dashboard.route.ts";
 //import { setupSwaggerDocs } from "./config/swagger.ts";
@@ -35,6 +35,7 @@ app.use(rateLimit({
   max: 100
 }));
 
+/*
 // Add session middleware
 app.use(session({
   secret: process.env.SESSION_SECRET || 'fallback-secret',
@@ -45,7 +46,7 @@ app.use(session({
 // Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
-
+*/
 
 app.use(requestLogger);
 
@@ -54,10 +55,10 @@ app.use("/api/v2/dev", devRoutes);
 app.use("/api/v2/user", userRoutes);
 
 //dev oauth endpoint
-app.use("/api/v2/dev-auth", devOathRoute);
+//app.use("/api/v2/dev-auth", devOathRoute);
 
 //user oauth endpoint
-app.use("/api/v2/user-auth", userOauthRoute);
+//app.use("/api/v2/user-auth", userOauthRoute);
 
 //setupSwaggerDocs(app);
 
