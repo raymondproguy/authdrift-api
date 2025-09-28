@@ -1,3 +1,4 @@
+/*
 import express from "express";
 import passport from "passport";
 import {
@@ -26,3 +27,4 @@ router.get("/failure", handleAuthFailure);
 router.post("/logout", handleLogout);
 
 export default router;
+*/
